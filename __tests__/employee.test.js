@@ -38,15 +38,18 @@ test("gets employee's name from getName()", () => {
 })
 
 test("gets employee's id from getId()", () => {
+    const name = 'Greg';
     const id = 48652;
-    const employee = new Employee('Greg', id);
+    const employee = new Employee(name, id);
 
     expect(employee.getId()).toBe(id);
 })
 
 test("gets employee's email from getEmail()", () => {
+    const name = 'Greg';
+    const id = 489;
     const email = 'greg@umn.edu';
-    const employee = new Employee('Greg', 1, email);
+    const employee = new Employee(name, id, email);
 
     expect(employee.getEmail()).toBe(email);
 })
