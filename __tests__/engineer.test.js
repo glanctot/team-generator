@@ -26,7 +26,7 @@ test('getRole() returns "Engineer"', () => {
     const id = 489;
     const email = 'greg@umn.edu';
     const github = 'glanctot';
-    const employee = new Engineer(name, id, email, github);
+    const engineer = new Engineer(name, id, email, github);
 
-    expect(employee.getRole()).toBe(string);
+    expect(engineer.getRole()).toBe(string);
 })
