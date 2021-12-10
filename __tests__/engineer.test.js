@@ -1,10 +1,11 @@
 const Engineer = require('../lib/Engineer.js');
 
-test('creates engineer object', () => {
-    const engineer = new Engineer('Greg');
+test('can set github from constructor', () => {
+    const github = 'glanctot';
+    const name = 'greg';
+    const id = 489;
+    const email = 'greg@umn.edu';
+    const engineer = new Engineer(name, id, email, github);
 
-    expect(engineer.name).toBe('Greg');
-    expect(engineer.id).toEqual(expect.any(Number));
-    expect(engineer.email).toEqual(expect.any(String));
-    expect(engineer.github).toEqual(expect.any(String));
+    expect(engineer.github).toBe(github);
 })
