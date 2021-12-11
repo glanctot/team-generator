@@ -1,5 +1,4 @@
 const inquirer = require('inquirer');
-const fs = require('fs');
 
 const Engineer = require('./lib/Engineer.js');
 const Manager = require('./lib/Manager.js');
@@ -82,6 +81,7 @@ const addQuestion = () => {
             internQuestions();
         } else {
             // writeFile();
+            console.log(team);
         }
     })
 }
