@@ -62,6 +62,7 @@ const managerQuestions = managerData => {
     .then(managerData => {
         manager = new Manager(managerData.name, managerData.id, managerData.email, managerData.officeNumber);
         team.push(manager);
+        addQuestion();
     })
 }
 
@@ -78,7 +79,7 @@ const addQuestion = () => {
         if (addData.role === 'Engineer') {
             engineerQuestions();
         } else if (addData.role === 'Intern') {
-            // internQuestions();
+            internQuestions();
         } else {
             // writeFile();
         }
@@ -203,6 +204,4 @@ const internQuestions = internData => {
     })
 }
 
-
-managerQuestions()
-    .then(addQuestion);
+managerQuestions();
