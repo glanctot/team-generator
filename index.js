@@ -61,7 +61,7 @@ const managerQuestions = managerData => {
         }
     ])
     .then(managerData => {
-        manager = new Manager(managerData.name, managerData.id, managerData.email, managerData.officeNumber);
+        const manager = new Manager(managerData.name, managerData.id, managerData.email, managerData.officeNumber);
         team.push(manager);
         addQuestion();
     })
@@ -141,7 +141,7 @@ const engineerQuestions = engineerData => {
         }
     ])
     .then(engineerData => {
-        engineer = new Engineer(engineerData.name, engineerData.id, engineerData.email, engineerData.github);
+        const engineer = new Engineer(engineerData.name, engineerData.id, engineerData.email, engineerData.github);
         team.push(engineer);
         addQuestion();
     })
@@ -200,7 +200,7 @@ const internQuestions = internData => {
         }
     ])
     .then(internData => {
-        intern = new Intern(internData.name, internData.id, internData.email, internData.school);
+        const intern = new Intern(internData.name, internData.id, internData.email, internData.school);
         team.push(intern);
         addQuestion();
     })

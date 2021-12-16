@@ -1,7 +1,72 @@
-const Engineer = require("../lib/Engineer");
-const Manager = require("../lib/Manager");
-
 const generatePage = team => {
+    const html = [];
+
+    html.push(team
+        .filter(team => team.getRole() === "Manager")
+        .map(manager => generateManager(manager))
+        .join("")
+        );
+
+    html.push(team
+        .filter(team => team.getRole() === "Engineer")
+        .map(engineer => generateEngineer(engineer))
+        .join("")
+        );
+
+    html.push(team
+        .filter(team => team.getRole() === "Intern")
+        .map(intern => generateIntern(intern))
+        .join("")
+    );
+    return generateHtml(html.join(""));
+}
+
+const generateManager = manager => {
+    return `
+            <div class="card">
+                <div class="card-header bg-primary">
+                    <h3 class="name">${manager.getName()}</h3>
+                    <h5 class="role">${manager.getRole()}</h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">ID: ${manager.getId()}</li>
+                    <li class="list-group-item">Email: <a href="mailto:${manager.getEmail()}">${manager.getEmail()}</a></li>
+                    <li class="list-group-item">Office Number: ${manager.getOffice()}</li>
+                </ul>
+            </div>`
+}
+
+const generateEngineer = engineer => {
+    return `
+    <div class="card">
+        <div class="card-header bg-primary">
+            <h3 class="name">${engineer.getName()}</h3>
+            <h5 class="role">${engineer.getRole()}</h5>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">ID: ${engineer.getId()}</li>
+            <li class="list-group-item">Email: <a href="mailto:${engineer.getEmail()}">${engineer.getEmail()}</a></li>
+            <li class="list-group-item">GitHub: ${engineer.getGithub()}</li>
+        </ul>
+    </div>`
+}
+
+const generateIntern = intern => {
+    return `
+    <div class="card">
+        <div class="card-header bg-primary">
+            <h3 class="name">${intern.getName()}</h3>
+            <h5 class="role">${intern.getRole()}</h5>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">ID: ${intern.getId()}</li>
+            <li class="list-group-item">Email: <a href="mailto:${intern.getEmail()}">${intern.getEmail()}</a></li>
+            <li class="list-group-item">GitHub: ${intern.getSchool()}</li>
+        </ul>
+    </div>`
+}
+
+const generateHtml = html => {
     return `
     <!DOCTYPE html>
     <html lang="en">
@@ -23,32 +88,13 @@ const generatePage = team => {
         </header>
 
         <div class="row">
-            <div class="card">
-                <div class="card-header bg-primary">
-                    <h3 class="name">${manager.name}</h3>
-                    <h5 class="role">${Manager.name}</h5>
-                </div>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item">ID: ${manager.id}</li>
-                    <li class="list-group-item">Email: ${manager.email}</li>
-                    <li class="list-group-item">Office Number: ${manager.officeNumber}</li>
-                </ul>
-            </div>
-            <div class="card">
-                <div class="card-header bg-primary">
-                    <h3 class="name">${engineer.name}</h3>
-                    <h5 class="role">${Engineer.name}</h5>
-                </div>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item">ID: ${engineer.id}</li>
-                    <li class="list-group-item">Email: ${engineer.email}</li>
-                    <li class="list-group-item">Office Number: ${engineer.github}</li>
-                </ul>
-            </div>
-        </div>
+            ${generateManager}
+            ${generateEngineer}
+            ${generateIntern}
     </body>
     </html>
     `
-}
+}    
+
 
 module.exports = generatePage;

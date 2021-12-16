@@ -19,29 +19,48 @@
         </header>
 
         <div class="row">
+            manager => {
+    return `
             <div class="card">
                 <div class="card-header bg-primary">
-                    <h3 class="name">lexi</h3>
-                    <h5 class="role">Manager</h5>
+                    <h3 class="name">${manager.getName()}</h3>
+                    <h5 class="role">${manager.getRole()}</h5>
                 </div>
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item">ID: 234</li>
-                    <li class="list-group-item">Email: lexi@jeans</li>
-                    <li class="list-group-item">Office Number: 4542</li>
+                    <li class="list-group-item">ID: ${manager.getId()}</li>
+                    <li class="list-group-item">Email: <a href="mailto:${manager.getEmail()}">${manager.getEmail()}</a></li>
+                    <li class="list-group-item">Office Number: ${manager.getOffice()}</li>
                 </ul>
-            </div>
-            <div class="card">
-                <div class="card-header bg-primary">
-                    <h3 class="name">greg</h3>
-                    <h5 class="role">Engineer</h5>
-                </div>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item">ID: 243</li>
-                    <li class="list-group-item">Email: greg@jeans</li>
-                    <li class="list-group-item">Office Number: gregj</li>
-                </ul>
-            </div>
+            </div>`
+}
+            engineer => {
+    return `
+    <div class="card">
+        <div class="card-header bg-primary">
+            <h3 class="name">${engineer.getName()}</h3>
+            <h5 class="role">${engineer.getRole()}</h5>
         </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">ID: ${engineer.getId()}</li>
+            <li class="list-group-item">Email: <a href="mailto:${engineer.getEmail()}">${engineer.getEmail()}</a></li>
+            <li class="list-group-item">GitHub: ${engineer.getGithub()}</li>
+        </ul>
+    </div>`
+}
+            intern => {
+    return `
+    <div class="card">
+        <div class="card-header bg-primary">
+            <h3 class="name">${intern.getName()}</h3>
+            <h5 class="role">${intern.getRole()}</h5>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">ID: ${intern.getId()}</li>
+            <li class="list-group-item">Email: <a href="mailto:${intern.getEmail()}">${intern.getEmail()}</a></li>
+            <li class="list-group-item">GitHub: ${intern.getSchool()}</li>
+        </ul>
+    </div>`
+}
     </body>
     </html>
     
