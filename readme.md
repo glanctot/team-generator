@@ -11,6 +11,7 @@ A command line application that accepts user input.  Users are prompted for info
 Must have Node.js installed.
 
 ## Usage
+[Working Video](https://watch.screencastify.com/v/09kX8FgWZN26mtjyTJJJ)
 
 ## Credits
 [W3 Schools](https://www.w3schools.com/)<br>
