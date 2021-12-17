@@ -5,7 +5,7 @@ const generateTeam = team => {
         <div class="card col m-2">
             <div class="card-header bg-primary text-light">
                 <h3 class="name">${manager.getName()}</h3>
-                <h5 class="role">${manager.getRole()}</h5>
+                <h5 class="role"><i class="fas fa-mug-hot"></i>${manager.getRole()}</h5>
             </div>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item">ID: ${manager.getId()}</li>
@@ -20,7 +20,7 @@ const generateTeam = team => {
         <div class="card col m-2">
             <div class="card-header bg-primary text-light">
                 <h3 class="name">${engineer.getName()}</h3>
-                <h5 class="role">${engineer.getRole()}</h5>
+                <h5 class="role"><i class="fas fa-glasses"></i>${engineer.getRole()}</h5>
             </div>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item">ID: ${engineer.getId()}</li>
@@ -35,7 +35,7 @@ const generateTeam = team => {
         <div class="card col m-2">
             <div class="card-header bg-primary text-light">
                 <h3 class="name">${intern.getName()}</h3>
-                <h5 class="role">${intern.getRole()}</h5>
+                <h5 class="role"><i class="fas fa-user-graduate"></i>${intern.getRole()}</h5>
             </div>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item">ID: ${intern.getId()}</li>
@@ -85,12 +85,13 @@ const generateHtml = team => {
     </head>
 
     <body>
-        <header class="m-3 text-center">
+        <header class="p-3 text-center bg-danger">
             <h1 class="title">My Team</h1>
         </header>
-
-        <div class="row">
-            ${generateTeam(team)}
+        <div class="container">
+            <div class="row">
+                ${generateTeam(team)}
+            </div>
         </div>
     </body>
     </html>
