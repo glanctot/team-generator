@@ -1,72 +1,73 @@
-const generatePage = team => {
+const generateTeam = team => {
     const html = [];
 
+    const generateManager = manager => {
+        return `
+        <div class="card">
+            <div class="card-header bg-primary">
+                <h3 class="name">${manager.getName()}</h3>
+                <h5 class="role">${manager.getRole()}</h5>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">ID: ${manager.getId()}</li>
+                <li class="list-group-item">Email: <a href="mailto:${manager.getEmail()}">${manager.getEmail()}</a></li>
+                <li class="list-group-item">Office Number: ${manager.getOffice()}</li>
+            </ul>
+        </div>`
+    }
+
+    const generateEngineer = engineer => {
+        return `
+        <div class="card">
+            <div class="card-header bg-primary">
+                <h3 class="name">${engineer.getName()}</h3>
+                <h5 class="role">${engineer.getRole()}</h5>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">ID: ${engineer.getId()}</li>
+                <li class="list-group-item">Email: <a href="mailto:${engineer.getEmail()}">${engineer.getEmail()}</a></li>
+                <li class="list-group-item">GitHub: ${engineer.getGithub()}</li>
+            </ul>
+        </div>`
+    }
+
+    const generateIntern = intern => {
+        return `
+        <div class="card">
+            <div class="card-header bg-primary">
+                <h3 class="name">${intern.getName()}</h3>
+                <h5 class="role">${intern.getRole()}</h5>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">ID: ${intern.getId()}</li>
+                <li class="list-group-item">Email: <a href="mailto:${intern.getEmail()}">${intern.getEmail()}</a></li>
+                <li class="list-group-item">School: ${intern.getSchool()}</li>
+            </ul>
+        </div>`
+    }
+
     html.push(team
-        .filter(team => team.getRole() === "Manager")
+        .filter(employee => employee.getRole() === "Manager")
         .map(manager => generateManager(manager))
         .join("")
-        );
+    );
 
     html.push(team
-        .filter(team => team.getRole() === "Engineer")
+        .filter(employee => employee.getRole() === "Engineer")
         .map(engineer => generateEngineer(engineer))
         .join("")
-        );
+    );
 
     html.push(team
-        .filter(team => team.getRole() === "Intern")
+        .filter(employee => employee.getRole() === "Intern")
         .map(intern => generateIntern(intern))
         .join("")
     );
+
     return generateHtml(html.join(""));
 }
 
-const generateManager = manager => {
-    return `
-            <div class="card">
-                <div class="card-header bg-primary">
-                    <h3 class="name">${manager.getName()}</h3>
-                    <h5 class="role">${manager.getRole()}</h5>
-                </div>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item">ID: ${manager.getId()}</li>
-                    <li class="list-group-item">Email: <a href="mailto:${manager.getEmail()}">${manager.getEmail()}</a></li>
-                    <li class="list-group-item">Office Number: ${manager.getOffice()}</li>
-                </ul>
-            </div>`
-}
-
-const generateEngineer = engineer => {
-    return `
-    <div class="card">
-        <div class="card-header bg-primary">
-            <h3 class="name">${engineer.getName()}</h3>
-            <h5 class="role">${engineer.getRole()}</h5>
-        </div>
-        <ul class="list-group list-group-flush">
-            <li class="list-group-item">ID: ${engineer.getId()}</li>
-            <li class="list-group-item">Email: <a href="mailto:${engineer.getEmail()}">${engineer.getEmail()}</a></li>
-            <li class="list-group-item">GitHub: ${engineer.getGithub()}</li>
-        </ul>
-    </div>`
-}
-
-const generateIntern = intern => {
-    return `
-    <div class="card">
-        <div class="card-header bg-primary">
-            <h3 class="name">${intern.getName()}</h3>
-            <h5 class="role">${intern.getRole()}</h5>
-        </div>
-        <ul class="list-group list-group-flush">
-            <li class="list-group-item">ID: ${intern.getId()}</li>
-            <li class="list-group-item">Email: <a href="mailto:${intern.getEmail()}">${intern.getEmail()}</a></li>
-            <li class="list-group-item">GitHub: ${intern.getSchool()}</li>
-        </ul>
-    </div>`
-}
-
-const generateHtml = html => {
+const generateHtml = team => {
     return `
     <!DOCTYPE html>
     <html lang="en">
@@ -88,13 +89,12 @@ const generateHtml = html => {
         </header>
 
         <div class="row">
-            ${generateManager}
-            ${generateEngineer}
-            ${generateIntern}
+            ${generateTeam(team)}
+        </div>
     </body>
     </html>
     `
 }    
 
 
-module.exports = generatePage;
+module.exports = generateTeam;

@@ -1,5 +1,5 @@
 const inquirer = require('inquirer');
-const generatePage = require('./src/page-template.js');
+const generateTeam = require('./src/page-template.js');
 const writeFile = require('./utils/generate-site');
 
 const Engineer = require('./lib/Engineer.js');
@@ -82,7 +82,7 @@ const addQuestion = () => {
         } else if (addData.role === 'Intern') {
             internQuestions();
         } else {
-            const template = generatePage(team);
+            const template = generateTeam(team);
             writeFile(template);
         }
     })
