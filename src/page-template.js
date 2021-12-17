@@ -1,10 +1,9 @@
 const generateTeam = team => {
-    const html = [];
 
     const generateManager = manager => {
         return `
-        <div class="card">
-            <div class="card-header bg-primary">
+        <div class="card col m-2">
+            <div class="card-header bg-primary text-light">
                 <h3 class="name">${manager.getName()}</h3>
                 <h5 class="role">${manager.getRole()}</h5>
             </div>
@@ -18,23 +17,23 @@ const generateTeam = team => {
 
     const generateEngineer = engineer => {
         return `
-        <div class="card">
-            <div class="card-header bg-primary">
+        <div class="card col m-2">
+            <div class="card-header bg-primary text-light">
                 <h3 class="name">${engineer.getName()}</h3>
                 <h5 class="role">${engineer.getRole()}</h5>
             </div>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item">ID: ${engineer.getId()}</li>
                 <li class="list-group-item">Email: <a href="mailto:${engineer.getEmail()}">${engineer.getEmail()}</a></li>
-                <li class="list-group-item">GitHub: ${engineer.getGithub()}</li>
+                <li class="list-group-item">GitHub: <a href="https://www.github.com/${engineer.getGithub()}">${engineer.getGithub()}</a></li>
             </ul>
         </div>`
     }
 
     const generateIntern = intern => {
         return `
-        <div class="card">
-            <div class="card-header bg-primary">
+        <div class="card col m-2">
+            <div class="card-header bg-primary text-light">
                 <h3 class="name">${intern.getName()}</h3>
                 <h5 class="role">${intern.getRole()}</h5>
             </div>
@@ -45,6 +44,8 @@ const generateTeam = team => {
             </ul>
         </div>`
     }
+
+    const html = [];
 
     html.push(team
         .filter(employee => employee.getRole() === "Manager")
@@ -64,7 +65,7 @@ const generateTeam = team => {
         .join("")
     );
 
-    return generateHtml(html.join(""));
+    return html.join("");
 }
 
 const generateHtml = team => {
@@ -84,7 +85,7 @@ const generateHtml = team => {
     </head>
 
     <body>
-        <header>
+        <header class="m-3 text-center">
             <h1 class="title">My Team</h1>
         </header>
 
@@ -97,4 +98,4 @@ const generateHtml = team => {
 }    
 
 
-module.exports = generateTeam;
+module.exports = generateHtml;
